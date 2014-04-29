@@ -1,0 +1,4 @@
+Android Notifier Application
+Copyright 2014 Pluralsight
+
+This product includes software developed at HIQES LLC (http://www.hiqes.com).
