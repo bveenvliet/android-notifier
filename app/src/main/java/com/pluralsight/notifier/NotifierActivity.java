@@ -82,8 +82,10 @@ public class NotifierActivity extends Activity implements View.OnFocusChangeList
             //  an icon of some kind, otherwise the NotificationManager will
             //  ignore our request and log a complaint.
             Notification.Builder bldr = new Notification.Builder(getApplicationContext());
+            String contentText = mContent.getText().toString();
             bldr.setContentTitle(mTitle.getText().toString());
-            bldr.setContentText(mContent.getText().toString());
+            bldr.setContentText(contentText);
+            bldr.setTicker(contentText);
             bldr.setSmallIcon(android.R.drawable.ic_dialog_alert);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
                 //noinspection deprecation
