@@ -77,6 +77,10 @@ public class NotifierActivity extends Activity implements View.OnFocusChangeList
         int id = item.getItemId();
 
         if (id == R.id.set_notify) {
+            //  Using a Notification.Builder, create a new Notification object
+            //  with the user's title and content.  Note that we must also set
+            //  an icon of some kind, otherwise the NotificationManager will
+            //  ignore our request and log a complaint.
             Notification.Builder bldr = new Notification.Builder(getApplicationContext());
             bldr.setContentTitle(mTitle.getText().toString());
             bldr.setContentText(mContent.getText().toString());
@@ -87,11 +91,14 @@ public class NotifierActivity extends Activity implements View.OnFocusChangeList
             } else {
                 notify = bldr.build();
             }
+
+            //  Prevent the user from clearing the notification, we want to be
+            //  responsible for clearing it via our AB button.
             notify.flags |= Notification.FLAG_NO_CLEAR;
             mCurID = (int)System.currentTimeMillis();
 
-            //  Now that we have created our notification with the requested details, send it
-            //  over to the NotificationManager for display.
+            //  Now that we have created our notification with the requested
+            //  details, send it over to the NotificationManager for display.
             mMgr.notify(mCurID, notify);
             ret = true;
         } else if (id == R.id.clear_notify) {
